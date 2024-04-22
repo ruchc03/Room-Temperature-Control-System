@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Temperature Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Room Temperature Control</h1>
+    <form id="control-form">
+        <label for="setpoint">Setpoint (°F):</label>
+        <input type="number" id="setpoint" name="setpoint" step="0.1">
+        <br>
+        <label for="deadband">Deadband (°F):</label>
+        <input type="number" id="deadband" name="deadband" step="0.1">
+        <br>
+        <label for="heating_output">Heating Output (%):</label>
+        <input type="number" id="heating_output" name="heating_output" min="0" max="100">
+        <br>
+        <label for="cooling_output">Cooling Output (%):</label>
+        <input type="number" id="cooling_output" name="cooling_output" min="0" max="100">
+        <br>
+        <label for="enable_control">Enable Control:</label>
+        <input type="checkbox" id="enable_control" name="enable_control">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <div id="user-overrides">
+        <h3>User Overrides:</h3>
+        <p id="setpoint-override">Setpoint: Default</p>
+        <p id="deadband-override">Deadband: Default</p>
+        <p id="heating-output-override">Heating Output: Default</p>
+        <p id="cooling-output-override">Cooling Output: Default</p>
+        <p id="enable-control-override">Enable Control: Default</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

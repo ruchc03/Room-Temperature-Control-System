@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -39,8 +39,14 @@ def index():
             enable_control = True if request.form['enable_control'] == 'on' else False
             user_overrides['enable_control'] = True
 
-    return render_template('index.html', setpoint=setpoint, deadband=deadband, heating_output=heating_output,
-                           cooling_output=cooling_output, enable_control=enable_control, user_overrides=user_overrides)
+    return jsonify({
+        'setpoint': setpoint,
+        'deadband': deadband,
+        'heating_output': heating_output,
+        'cooling_output': cooling_output,
+        'enable_control': enable_control,
+        'user_overrides': user_overrides
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)
