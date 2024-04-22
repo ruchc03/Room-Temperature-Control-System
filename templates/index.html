@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Temperature Control</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Room Temperature Control</h1>
+    <form method="post">
+        <label for="setpoint">Setpoint (°F):</label>
+        <input type="number" id="setpoint" name="setpoint" value="{{ setpoint }}" step="0.1">
+        <br>
+        <label for="deadband">Deadband (°F):</label>
+        <input type="number" id="deadband" name="deadband" value="{{ deadband }}" step="0.1">
+        <br>
+        <label for="heating_output">Heating Output (%):</label>
+        <input type="number" id="heating_output" name="heating_output" value="{{ heating_output }}" min="0" max="100">
+        <br>
+        <label for="cooling_output">Cooling Output (%):</label>
+        <input type="number" id="cooling_output" name="cooling_output" value="{{ cooling_output }}" min="0" max="100">
+        <br>
+        <label for="enable_control">Enable Control:</label>
+        <input type="checkbox" id="enable_control" name="enable_control" {% if enable_control %}checked{% endif %}>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <div id="user-overrides">
+        <h3>User Overrides:</h3>
+        <p>Setpoint: {% if user_overrides.setpoint %}Overridden{% else %}Default{% endif %}</p>
+        <p>Deadband: {% if user_overrides.deadband %}Overridden{% else %}Default{% endif %}</p>
+        <p>Heating Output: {% if user_overrides.heating_output %}Overridden{% else %}Default{% endif %}</p>
+        <p>Cooling Output: {% if user_overrides.cooling_output %}Overridden{% else %}Default{% endif %}</p>
+        <p>Enable Control: {% if user_overrides.enable_control %}Overridden{% else %}Default{% endif %}</p>
+    </div>
+</body>
+</html>
